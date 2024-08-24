@@ -128,3 +128,11 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# vs code extension
+.vscode
+
+# ts build directory
+build/
+
+package-lock.json
