@@ -1,4 +1,4 @@
-import { EHttpStatusCode } from "../interfaces/enums/EHttpStatusCode";
+import { EHttpStatusCode } from "../Application/interfaces/enums/EHttpStatusCode";
 class ApiError extends Error {
   public readonly name: string;
   public readonly httpCode: EHttpStatusCode;

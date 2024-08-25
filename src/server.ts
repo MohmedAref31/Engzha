@@ -1,11 +1,25 @@
-import "dotenv/config";
 import { App } from "./app";
+import { UserRepostry } from "./Application/repostries/userRepostry";
+import { UserService } from "./Application/services/userService";
+import { UserController } from "./Presentation/controllers/userController";
+import { UserRoute } from "./Presentation/routes/userRoute";
 
-const port : number = process.env.PORT ? +process.env.PORT :   8000 ;
+
+
+const userRepostry = new UserRepostry();
+const userService = new UserService(userRepostry);
+
+const userController = new UserController(userService);
+
+const userRoute = new UserRoute(userController);
 
 
 
-const app = new App(port); 
+
+// const userRoute = new UserService(new UserController(new UserService(new UserRepostry())));
+
+
+const app = new App([userRoute]); 
 
 app.listen()
 

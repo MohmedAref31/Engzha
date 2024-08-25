@@ -1,16 +1,33 @@
 // configuration with database connect
 import pg, { ClientConfig } from 'pg';
 
-import { PORT, DB_HOST,DB_PASSWORD,DB_USER,DB_NAME, DB_CA, DB_PORT } from '@/Config';
+import { DB_HOST,DB_PASSWORD,DB_USER,DB_NAME, DB_CA, DB_PORT } from '@/Config';
 
 // console.log(PORT, DB_HOST,DB_PASSWORD,DB_USER,DB_NAME, DB_CA, DB_PORT)
-const config:ClientConfig = {
+// const config:ClientConfig = {
+//     user: DB_USER,
+//     password: DB_PASSWORD,
+//     host: DB_HOST,
+//     port: DB_PORT ? parseInt(DB_PORT, 10) : undefined, // Convert DB_PORT to number or assign undefined
+//     database: DB_NAME,
+//     // ssl:false
+//     ssl: {
+//         rejectUnauthorized: true,
+//         ca: DB_CA,
+//     },
+// };
+
+// const client = new pg.Client(config);
+
+
+
+
+const config = {
     user: DB_USER,
-    password: DB_PASSWORD,
-    host: DB_HOST,
-    port: DB_PORT ? parseInt(DB_PORT, 10) : undefined, // Convert DB_PORT to number or assign undefined
-    database: DB_NAME,
-    // ssl:false
+    password:DB_PASSWORD ,
+    host:DB_HOST ,
+    port: Number(DB_PORT),
+    database:DB_NAME ,
     ssl: {
         rejectUnauthorized: true,
         ca: DB_CA,
@@ -29,9 +46,17 @@ const connectDB = async () => {
     }
 }
 
+const disconnectDB = async () => {
+    try {
+        await client.end();
+        console.log('Database disconnected');
+    } catch (error) {
+        console.error('Database disconnection error', error);
+    }
+}
 
-export default connectDB;
 
+export { client as pgClient, connectDB, disconnectDB };
 // client.connect(function (err) {
 //     if (err)
 //         throw err;
