@@ -1,38 +1,43 @@
+import { inject, injectable } from "tsyringe";
 import { IUserRepository } from "../interfaces/User/IUserRepository";
 import { IUserService } from "../interfaces/User/IUserService";
+import { UserRepostry } from "../repostries/userRepostry";
 
 
 
 
 // all business logic handle in here 
+
+@injectable()
 export class UserService implements IUserService{
     // use depencie injection
-    constructor(public readonly userRepostry: IUserRepository){
-    }
+    // public  userRepostry: IUserRepository
+    // inejct data from UserRepostry to handle instance dynamic
+    constructor(@inject("UserRepository") private userRepository: IUserRepository) {}
 
     async create(user: any): Promise<any> {
-        return this.userRepostry.create(user);
+        return this.userRepository.create(user);
     }
 
 
     async findByEmail(email: string): Promise<any> {
-        return this.userRepostry.findByEmail(email);
+        return this.userRepository.findByEmail(email);
     }
 
     async findById(id: number): Promise<any> {
-        return this.userRepostry.findById(id);
+        return this.userRepository.findById(id);
     }
 
     async update(id: number, data: any): Promise<any> {
-        return this.userRepostry.update(id, data);
+        return this.userRepository.update(id, data);
     }
 
     async delete(id: number): Promise<boolean> {
-        return this.userRepostry.delete(id);
+        return this.userRepository.delete(id);
     }
 
     async findAll(): Promise<any> {
-        return this.userRepostry.findAll();
+        return this.userRepository.findAll();
     }
 
 }

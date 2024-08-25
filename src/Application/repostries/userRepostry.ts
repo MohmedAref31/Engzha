@@ -1,8 +1,9 @@
 import { pgClient, connectDB, disconnectDB } from "@/Infrastructure/database";
 import { IUserRepository } from "../interfaces/User/IUserRepository";
 import { User } from "@/Domain/entities/User";
+import { injectable } from "tsyringe";
 
-
+@injectable()
 export class UserRepostry implements IUserRepository{
     constructor(){
 

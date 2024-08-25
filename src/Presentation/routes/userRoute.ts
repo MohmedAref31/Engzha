@@ -1,11 +1,14 @@
 import { Router } from "express";
 import { UserController } from "../controllers/userController";
+import { container } from "tsyringe";
 
 
 export class UserRoute {
-    private router : Router;
-    constructor(public readonly userController: UserController) {
+    public router : Router;
+    public  userController: UserController
+    constructor() {
         this.router = Router();
+        this.userController = new UserController();
         this.routes(this.router);
     }
 
@@ -19,10 +22,13 @@ export class UserRoute {
         .get( this.userController.getUser.bind(this.userController))
         .put( this.userController.updateUser.bind(this.userController))
         .delete( this.userController.deleteUser.bind(this.userController));
-
     }
 
-    private get Router(){
-        return this.router;
-    }
+    // public getRouter(){
+    //     return this.router;
+    // }
 }
+
+
+
+

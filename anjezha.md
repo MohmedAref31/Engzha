@@ -8,3 +8,7 @@
 
    4- *framworks or infrastrucure layer*: it is responsible to communicate with thirdy party services such as connnect with databsse , paymob service , notification service   
 
+
+## seccond section work with how handle depencies injection automatic
+
+  

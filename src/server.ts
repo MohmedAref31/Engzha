@@ -6,12 +6,12 @@ import { UserRoute } from "./Presentation/routes/userRoute";
 
 
 
-const userRepostry = new UserRepostry();
-const userService = new UserService(userRepostry);
+// const userRepostry = new UserRepostry();
+// const userService = new UserService(userRepostry);
 
-const userController = new UserController(userService);
+// const userController = new UserController(userService);
 
-const userRoute = new UserRoute(userController);
+const userRoute = new UserRoute();
 
 
 

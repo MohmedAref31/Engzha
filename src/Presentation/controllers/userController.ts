@@ -1,14 +1,21 @@
 import { Request, Response, NextFunction } from "express";
+import { container } from "tsyringe";
 
 import { IUserService } from "@/Application/interfaces/User/IUserService";
+import { UserService } from "@/Application/services/userService";
 
 
 
 // how use depencie injection
 
 export class UserController{
+
+    // public  userService: IUserService
+    public  userService: IUserService
     
-    constructor(public readonly userService: IUserService) {
+    constructor() {
+        // resolve instance of UserService
+        this.userService = container.resolve(UserService);
     }
 
 
