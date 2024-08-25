@@ -1,5 +1,5 @@
 import { App } from "./app";
-import { UserRepostry } from "./Application/repostries/userRepostry";
+import { UserRepostry } from "./Application/repositories/userRepository";
 import { UserService } from "./Application/services/userService";
 import { UserController } from "./Presentation/controllers/userController";
 import { UserRoute } from "./Presentation/routes/userRoute";

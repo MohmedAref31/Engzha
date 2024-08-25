@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 import { IUserRepository } from "../interfaces/User/IUserRepository";
 import { IUserService } from "../interfaces/User/IUserService";
-import { UserRepostry } from "../repostries/userRepostry";
+import { UserRepostry } from "../repositories/userRepository";
 
 
 

@@ -11,4 +11,15 @@
 
 ## seccond section work with how handle depencies injection automatic
 
-  
+ ### how handle depencies injections four step and using it keyword (inject, injectable,  continer , resolve)
+   
+   1- step 1:
+     use it keyword injectacle previous class [name]Reposirory
+
+     2- step 2 : inject class repository in service such as 
+     `@inject("UserRepository") private userRepository: IUserRepository`
+
+     3- step 3 : resolve service in controller
+          this.userService= contianer.resolve(UserService)
+
+      4- step 4: use controller immidate  

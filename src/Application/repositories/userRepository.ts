@@ -3,6 +3,7 @@ import { IUserRepository } from "../interfaces/User/IUserRepository";
 import { User } from "@/Domain/entities/User";
 import { injectable } from "tsyringe";
 
+// repository for user
 @injectable()
 export class UserRepostry implements IUserRepository{
     constructor(){
