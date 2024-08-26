@@ -32,7 +32,7 @@ export class App {
 
 
     this.routes.forEach(route => {
-        this.app.use('/api/v1', route.Router)
+        this.app.use('/api/v1', route)
     })
 
     this.app.get('/api', (req, res, next)=>{

@@ -23,3 +23,18 @@
           this.userService= contianer.resolve(UserService)
 
       4- step 4: use controller immidate  
+
+
+## section three worked with handle depencies injection with inversity and reflate-metadate 
+
+  1- stpe 1: declare interfaceType include all symbols 
+  2- step 2: all classes makable @injectable
+  3- step 3: inject all class take properites in constructor  such as 
+      ` @inject(type.className) private readonly instanceName : InterfaceImplement
+  
+4- step 4 : handle it in route 
+      ```
+         * instance from Container  container = new Containder ()*
+           container.bind<interfaceIMplement>(symbolName).to(classService)
+
+           ```

@@ -1,13 +1,19 @@
+import { injectable } from "inversify";
+import { Pool } from "pg";
+
 import { pgClient, connectDB, disconnectDB } from "@/Infrastructure/database";
-import { IUserRepository } from "../interfaces/User/IUserRepository";
 import { User } from "@/Domain/entities/User";
-import { injectable } from "tsyringe";
+import { IUserRepository } from "../interfaces/User/IUserRepository";
 
 // repository for user
-@injectable()
-export class UserRepostry implements IUserRepository{
-    constructor(){
 
+
+@injectable()
+export class UserRepository implements IUserRepository{
+    private client: any;
+    constructor(){
+    //    this.pool = pgClient;
+      this.client = pgClient;
     }
 
 

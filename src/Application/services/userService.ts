@@ -1,7 +1,10 @@
-import { inject, injectable } from "tsyringe";
+
+import { injectable, inject } from "inversify";
+
 import { IUserRepository } from "../interfaces/User/IUserRepository";
 import { IUserService } from "../interfaces/User/IUserService";
-import { UserRepostry } from "../repositories/userRepository";
+import { UserRepository } from "../repositories/userRepository";
+import { INTERFACE_TYPE } from "@/helpers";
 
 
 
@@ -13,7 +16,7 @@ export class UserService implements IUserService{
     // use depencie injection
     // public  userRepostry: IUserRepository
     // inejct data from UserRepostry to handle instance dynamic
-    constructor(@inject("UserRepository") private userRepository: IUserRepository) {}
+    constructor(@inject(INTERFACE_TYPE.UserRepository) private readonly userRepository: IUserRepository) {}
 
     async create(user: any): Promise<any> {
         return this.userRepository.create(user);

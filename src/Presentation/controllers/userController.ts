@@ -1,22 +1,24 @@
 import { Request, Response, NextFunction } from "express";
-import { container } from "tsyringe";
+
 
 import { IUserService } from "@/Application/interfaces/User/IUserService";
+import { inject, injectable } from "inversify";
 import { UserService } from "@/Application/services/userService";
+import { INTERFACE_TYPE } from "@/helpers";
 
 
 
 // how use depencie injection
 
+@injectable()
 export class UserController{
 
     // public  userService: IUserService
-    public  userService: IUserService
+    // public  userService: IUserService
     
-    constructor() {
-        // resolve instance of UserService
-        this.userService = container.resolve(UserService);
-    }
+    constructor(@inject(INTERFACE_TYPE.UserService) private readonly userService: IUserService) {
+        // resolve instance of UserServic
+}
 
 
     async createUser(req:Request, res:Response, next:NewableFunction): Promise<any> {
